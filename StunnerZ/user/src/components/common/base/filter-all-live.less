@@ -1,0 +1,46 @@
+@import "../../../../style/vars.less";
+
+.custom-all-live {
+  .custom-main {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+
+    .custom-search {
+      width: 35%;
+      border: 3px solid #000;
+      border-radius: 5px;
+    }
+
+    .custom-btn {
+      display: flex;
+      width: 65%;
+      align-items: center;
+      justify-content: right;
+      gap: 10px;
+
+      .custom-btn-item {
+        width: 200px;
+        border: 3px solid #000;
+        border-radius: 5px;
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    .custom-select {
+      display: none;
+    }
+
+    @media screen and (max-width: 500px) {
+      justify-content: space-between;
+      .custom-search {
+        width: 100%;
+      }
+      .custom-btn {
+        display: none !important;
+      }
+    }
+  }
+}

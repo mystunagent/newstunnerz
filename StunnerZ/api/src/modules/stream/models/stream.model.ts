@@ -1,0 +1,43 @@
+import { Document } from 'mongoose';
+import { ObjectId } from 'mongodb';
+
+export class StreamModel extends Document {
+  performerId: ObjectId;
+
+  title: string;
+
+  description: string;
+
+  type: string;
+
+  optionStream: string;
+
+  sessionId: string;
+
+  isStreaming: number;
+
+  streamingTime: number;
+
+  lastStreamingTime: Date;
+
+  isFree: boolean;
+
+  price: number;
+
+  stats: {
+    members: number;
+    likes: number;
+  }
+
+  totalPurchased: number;
+
+  createdAt: Date;
+
+  updatedAt: Date;
+
+  includeIds: ObjectId[];
+
+  refId: ObjectId;
+
+  waiting?: boolean;
+}

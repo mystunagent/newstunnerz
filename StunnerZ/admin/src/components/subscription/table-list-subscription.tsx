@@ -1,0 +1,177 @@
+import {
+  Table, Tag, Button, Avatar
+} from 'antd';
+import { StopOutlined, RightCircleOutlined } from '@ant-design/icons';
+import { ISubscription } from 'src/interfaces';
+import { formatDate, nowIsBefore } from '@lib/date';
+
+interface IProps {
+  dataSource: ISubscription[];
+  pagination: {};
+  rowKey: string;
+  onChange(): Function;
+  loading: boolean;
+  onCancelSubscription: Function;
+  onRenewSubscription: Function;
+}
+
+export const TableListSubscription = ({
+  dataSource,
+  pagination,
+  rowKey,
+  onChange,
+  loading,
+  onCancelSubscription,
+  onRenewSubscription
+}: IProps) => {
+  const columns = [
+    {
+      title: 'ID',
+      dataIndex: 'subscriptionId'
+    },
+    {
+      title: 'User',
+      dataIndex: 'userInfo',
+      render(data, records) {
+        return (
+          <span>
+            <Avatar src={records?.userInfo?.avatar || '/no-avatar.png'} />
+            {' '}
+            {`${records?.userInfo?.name || records?.userInfo?.username || 'N/A'}`}
+          </span>
+        );
+      }
+    },
+    {
+      title: 'Model',
+      dataIndex: 'performerInfo',
+      render(data, records) {
+        return (
+          <span>
+            <Avatar src={records?.performerInfo?.avatar || '/no-avatar.png'} />
+            {' '}
+            {`${records?.performerInfo?.name || records?.performerInfo?.username || 'N/A'}`}
+          </span>
+        );
+      }
+    },
+    {
+      title: 'Type',
+      dataIndex: 'subscriptionType',
+      render(subscriptionType: string) {
+        switch (subscriptionType) {
+          case 'trial':
+            return <Tag color="orange">Trial Subscription</Tag>;
+          case 'monthly':
+            return <Tag color="blue">Monthly Subscription</Tag>;
+          case 'six_month':
+            return <Tag color="green">Six Months Subscription</Tag>;
+          case 'one_time':
+            return <Tag color="purple">One Time Subscription</Tag>;
+          case 'free':
+            return <Tag color="red">Free</Tag>;
+          default: return <Tag color="orange">{subscriptionType}</Tag>;
+        }
+      }
+    },
+    {
+      title: 'Start Date',
+      dataIndex: 'createdAt',
+      sorter: true,
+      render(date: Date) {
+        return <span>{formatDate(date, 'LL')}</span>;
+      }
+    },
+    {
+      title: 'Expiry Date',
+      dataIndex: 'expiredAt',
+      sorter: true,
+      render(date: Date, record) {
+        if (record.subscriptionType === 'one_time') {
+          return <span>N/A</span>;
+        }
+        return <span>{record.status === 'active' && formatDate(date, 'LL')}</span>;
+      }
+    },
+    {
+      title: 'Renewal Date',
+      dataIndex: 'nextRecurringDate',
+      sorter: true,
+      render(date: Date, record) {
+        if (record.subscriptionType === 'one_time') {
+          return <span>N/A</span>;
+        }
+        return <span>{record.status === 'active' && formatDate(date, 'LL')}</span>;
+      }
+    },
+    {
+      title: 'PM Gateway',
+      dataIndex: 'paymentGateway',
+      render(paymentGateway: string) {
+        switch (paymentGateway) {
+          case 'verotel':
+            return <Tag color="blue">Verotel</Tag>;
+          default:
+            return <Tag color="default">{paymentGateway}</Tag>;
+        }
+      }
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      render(status: string, record: ISubscription) {
+        if (!nowIsBefore(record.expiredAt)) {
+          return <Tag color="red">Suspended</Tag>;
+        }
+        switch (status) {
+          case 'active':
+            return <Tag color="green">Active</Tag>;
+          case 'deactivated':
+            return <Tag color="red">Inactive</Tag>;
+          default: return <Tag color="red">Inactive</Tag>;
+        }
+      }
+    },
+    {
+      title: 'Updated On',
+      dataIndex: 'updatedAt',
+      sorter: true,
+      render(date: Date) {
+        return <span>{formatDate(date)}</span>;
+      }
+    },
+    {
+      title: 'Action',
+      dataIndex: 'status',
+      render(data, records: ISubscription) {
+        return (
+          <span>
+            {records?.status === 'active' && nowIsBefore(records.expiredAt) ? (
+              <Button type="primary" onClick={() => onCancelSubscription(records)}>
+                <StopOutlined />
+                {' '}
+                Cancel
+              </Button>
+            ) : (
+              <Button type="primary" onClick={() => onRenewSubscription(records)}>
+                <RightCircleOutlined />
+                {' '}
+                Activate
+              </Button>
+            )}
+          </span>
+        );
+      }
+    }
+  ];
+  return (
+    <Table
+      columns={columns}
+      dataSource={dataSource}
+      rowKey={rowKey}
+      pagination={{ ...pagination, showSizeChanger: false }}
+      onChange={onChange}
+      loading={loading}
+    />
+  );
+};

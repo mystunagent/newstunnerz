@@ -1,0 +1,76 @@
+import * as mongoose from 'mongoose';
+
+export const ReferralEarningSchema = new mongoose.Schema({
+  registerSource: {
+    type: String,
+    index: true
+  },
+  registerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    index: true
+  },
+  referralSource: {
+    type: String,
+    index: true
+  },
+  referralId: {
+    type: mongoose.Schema.Types.ObjectId,
+    index: true
+  },
+  earningId: {
+    type: mongoose.Schema.Types.ObjectId
+  },
+  subPerformerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    index: true
+  },
+  type: {
+    type: String,
+    index: true
+  },
+  grossPrice: {
+    type: Number,
+    default: 0
+  },
+  netPrice: {
+    type: Number,
+    default: 0
+  },
+  subPerformerPrice: {
+    type: Number,
+    default: 0
+  },
+  referralCommission: {
+    type: Number,
+    default: 0
+  },
+  subPerformerCommission: {
+    type: Number,
+    default: 0
+  },
+  isPaid: {
+    type: Boolean,
+    default: false
+  },
+  paidAt: {
+    type: Date
+  },
+  latestPayment: {
+    type: Boolean,
+    default: false
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  isToken: {
+    type: Boolean,
+    default: false
+  },
+  transactionStatus: {
+    type: String,
+    default: 'success'
+  }
+}, {
+  collection: 'referralEarnings'
+});

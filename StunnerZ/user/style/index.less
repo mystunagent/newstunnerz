@@ -1,0 +1,47 @@
+@import '../node_modules/antd/dist/antd.less';
+@import './videojs.less';
+@import './vars.less';
+@import './global.less';
+@import './responsive.less';
+@import './dark-mode.less';
+@import './default.less';
+
+html {
+  scroll-behavior: smooth;
+}
+
+&::-webkit-scrollbar-thumb {
+  background-color: @light-grey;
+}
+
+&::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: @white;
+  color: @black;
+  font-size: 14px;
+  line-height: 23px;
+  font-family: @primary-font, @secondary-font, sans-serif !important;
+}
+
+button {
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    opacity: 0.8;
+  }
+}

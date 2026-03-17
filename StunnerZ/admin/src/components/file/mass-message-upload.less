@@ -1,0 +1,96 @@
+@import '../../../style/vars.less';
+
+.mass-message-upload-container {
+  display: flex;
+  width: 100%;
+  overflow: auto;
+  flex-wrap: wrap;
+
+  .mass-message-upload-item {
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 5px;
+    margin: 5px;
+    background-color: @light-blue;
+    position: relative;
+
+    .mass-message-remove {
+      position: absolute;
+      right: 5px;
+      top: 5px
+    }
+
+    .mass-message-upload-thumb {
+      height: 300px;
+      width: 300px;
+
+      .video-thumb {
+        width: 300px;
+        height: 300px;
+        background: rgba(0, 0, 0, .1);
+      }
+
+      .videojs-player {
+        .video-js {
+          padding-top: 100% !important;
+          .vjs-big-play-button {
+            top: calc(50% - 24px);
+            left: calc(50% - 45px);
+          }
+
+          .vjs-poster {
+            background-size: cover;
+            background-repeat: no-repeat;
+            border: 1px solid @primary-color;
+            border-radius: 5px;
+          }
+        }
+        .video-custom-height {
+          padding-top: calc(40vh) !important;
+        }
+      }
+
+      .mass-message-progess {
+        max-width: 300px;
+        margin-top: 10%;
+        ;
+      }
+    }
+
+    .mass-message-upload-name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 120px;
+    }
+
+    .mass-message-upload-size {
+      font-size: 8px;
+    }
+  }
+
+  .add-more {
+    display: flex;
+    height: 130px;
+    align-self: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: @light-grey;
+    border-radius: 5px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    cursor: pointer;
+
+    .ant-upload {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+  }
+}

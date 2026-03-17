@@ -1,0 +1,54 @@
+.custom-model-live {
+	max-width: calc(100% - 60px);
+	margin: auto;
+	width: 100%;
+
+	.grid-card {
+    margin-bottom: 15px;
+	border-radius: 8px;
+	height: auto;
+	border: 2px solid #0c2935;
+	overflow: hidden;
+	cursor: pointer;
+		.gird-card-img {
+			position: relative;
+			padding-top: 110%;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+		.live-status-card {
+			width: 100%;
+			right: 5px;
+			bottom: 5px;
+			position: absolute;
+			padding: 0 10px;
+			font-size: 20px;
+			line-height: 30px;
+
+			.live-status-card-content{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				span {
+					color: #000;
+					font-weight: bold;
+					text-transform:capitalize;
+				}
+			}
+
+			.live-status-heart {
+				color: #fff;
+				border-radius: 7px;
+				border: 2px solid #fff;
+				background: red;
+			}
+		}
+		.model-name {
+			position: relative;
+		}
+	}
+	button {
+		margin-bottom: 20px;
+	}
+}

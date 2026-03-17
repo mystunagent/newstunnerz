@@ -1,0 +1,56 @@
+@import '../../../style/vars.less';
+
+.conversation-stream {
+  width: 100%;
+  min-height: 375px;
+  max-height: 600px;
+  height: 480px;
+  border: solid 1px @primary-color;
+  border-radius: 5px;
+  position: relative;
+  .tablist {
+    margin: 0;
+  }
+  .ant-tabs > .ant-tabs-nav, .ant-tabs > div > .ant-tabs-nav {
+    margin: 0 !important;
+  }
+  .ant-tabs-nav-list {
+    width: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    overflow: hidden;
+    .ant-tabs-tab {
+      width: 100%;
+      justify-content: center;
+      margin: 0;
+      height: 50px;
+    }
+    .ant-tabs-tab-active {
+      background-color: @primary-color;
+      color: @white;
+      .ant-tabs-tab-btn {
+        color: @white;
+      }
+    }
+  }
+  &.active {
+    .ant-tabs-tab {
+      width: 100%;
+    }
+  }
+
+  .tip-box {
+    margin: 3px 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: @mobile-screen) {
+  .conversation-stream {
+    height: 440px;
+
+    .message-stream {
+      height: 388px;
+    }
+  }
+}

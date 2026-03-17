@@ -1,0 +1,138 @@
+@import '../../../style/vars.less';
+
+.vid-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .05);
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 3px;
+  overflow: hidden;
+
+  .vid-thumb {
+    height: 185px;
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    .lock-middle {
+      position: relative;
+      width: 100%;
+      display: inline-flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .anticon {
+        font-size: 32px;
+        color: @white;
+      }
+
+      .ant-btn {
+        font-size: 11px;
+        color: @white;
+        font-family: @primary-font-bold;
+      }
+    }
+
+    .card-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: @light-grey;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @media screen and (max-width: @mobile-screen) {
+      height: 150px;
+    }
+  }
+
+  .vid-stats {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    color: @white;
+    font-size: 10px;
+    padding: 5px 0 5px 5px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, #04040e00 0%, rgba(60, 60, 60, .5) 100%);
+
+    a {
+      color: @white;
+      padding-right: 10px;
+    }
+  }
+
+  .vid-info {
+    font-family: @primary-font-bold;
+    color: @white;
+    background-color: @primary-color;
+    padding: 5px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+
+    @media screen and (max-width: @mobile-screen) {
+      font-size: 11px;
+    }
+  }
+
+  .vid-price {
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    z-index: 1;
+
+    .label-price {
+      color: @white;
+      background-color: @secondary-color;
+      padding: 3px 15px;
+      clip-path: polygon(0px 0px, 0px 100%, 100% 100%, 90% 50%, 100% 0);
+      font-size: 11px;
+      font-weight: 600;
+      margin: 5px 0;
+    }
+  }
+
+  .vid-calendar {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    z-index: 1;
+    color: @white;
+    font-size: 20px;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    .vid-info {
+      background-color: @secondary-color;
+    }
+  }
+}
+
+.upload-bl {
+  position: relative;
+  background-color: @light-grey;
+  border-radius: 3px;
+  .remove-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

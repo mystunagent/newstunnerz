@@ -1,0 +1,55 @@
+// import Routes from 'next-routes';
+const routes = require('next-routes');
+
+/**
+ * routes.add([name], pattern = /name, page = name)
+   routes.add(object)
+ */
+
+export default routes()
+  .add('dashboard', '/dashboard', '/dashboard')
+  .add('contact', '/contact', '/contact')
+  .add('video', '/video/:id', '/video')
+  .add('store', '/store/:id', '/store')
+  .add('gallery', '/gallery/:id', '/gallery')
+  .add('page', '/page/:id', '/page')
+  .add('feed', '/post/:id', '/post')
+  .add('message', '/messages', '/messages')
+  .add('sexting', '/sexting', '/sexting')
+  .add('cart', '/cart', '/cart')
+  .add('error', '/error', '/error')
+  .add('home', '/', '/')
+  .add('login', '/auth/login', '/auth/login')
+  .add('sub-performer', '/sub-performer', '/sub-performer')
+  .add('search', '/search', '/search')
+  .add('wallet', '/wallet', '/wallet')
+  .add('posts', '/posts', '/posts')
+  .add('payment-success', '/payment/success', '/payment/success')
+  .add('payment-cancel', '/payment/cancel', '/payment/cancel')
+  // performer
+  .add('creators', '/creator', '/creator')
+  .add('banking', '/creator/banking', '/creator/banking')
+  .add('block-user', '/creator/block-user', '/creator/block-user')
+  .add('account', '/creator/account', '/creator/account')
+  .add('earning', '/creator/earning', '/creator/earning')
+  .add('feed-manager', '/creator/my-post', '/creator/my-post')
+  .add('gallery-manager', '/creator/my-gallery', '/creator/my-gallery')
+  .add('order-manager', '/creator/my-order', '/creator/my-order')
+  .add('store-manager', '/creator/my-store', '/creator/my-store')
+  .add('video-manager', '/creator/my-video', '/creator/my-video')
+  .add('my-subscriber', '/creator/my-subscriber', '/creator/my-subscriber')
+  .add('story-manager', '/creator/my-story', '/creator/my-story')
+  .add('payout-request', '/creator/payout-request', '/creator/payout-request')
+  .add('public-chat', '/creator/live', '/creator/live')
+  .add('creator-private-chat', '/creator/live/private/:key', '/creator/live/private')
+  .add('booking-private-chat', '/creator/live/appointment', '/creator/live/appointment')
+  // user
+  .add('public-stream', '/stream/:username', '/stream')
+  .add('user-private-chat', '/stream/privatechat/:username', '/stream/privatechat')
+  .add('streaming', '/streaming/appointment', '/streaming/appointment')
+  .add('book-streaming', '/streaming', '/streaming')
+  .add('private-streaming', '/private-streaming', '/private-streaming')
+  .add('user-private-streaming', '/private-streaming/privatechat/:username', '/private-streaming/privatechat')
+  .add('list-stream', '/streaming/:username', '/streaming/details')
+  // must be in the last
+  .add('creator', '/:username', '/creator/profile');

@@ -1,0 +1,26 @@
+.main-container {
+
+	.title-available-time {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+
+		.title-link-back {
+			.ant-page-header-heading-left {
+				flex-direction: row-reverse;
+			}
+		}
+
+
+		@media screen and (max-width: 500px) {
+			flex-direction: column;
+
+			.title-link-back {
+				padding-bottom: 10px;
+				padding-top: 0;
+			}
+    }
+	}
+
+}

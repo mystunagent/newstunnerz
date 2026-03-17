@@ -1,0 +1,37 @@
+.card-upcoming-stream {
+	.ant-card-body {
+		padding: 10px;
+		height: 150px;
+		overflow-y: scroll;
+		.ant-card-meta-description{
+			overflow-wrap: break-word;
+		}
+	}
+
+	.meta-username {
+		.ant-card-meta-title{
+			font-size: 20px;
+    	font-weight: bold;
+		}
+	}
+
+	.meta-show {
+		.ant-card-meta-title {
+			margin: 0;
+		}
+	}
+
+	.meta-show-mobile {
+		display: none;
+	}
+
+	@media screen and (max-width: 320px) {
+		.meta-show {
+			display: none;
+		}
+
+		.meta-show-mobile {
+			display: block;
+		}
+	}
+}

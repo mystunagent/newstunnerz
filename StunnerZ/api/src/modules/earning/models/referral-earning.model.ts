@@ -1,0 +1,41 @@
+import { Document } from 'mongoose';
+import { ObjectId } from 'mongodb';
+
+export class ReferralEarningModel extends Document {
+  registerSource: string;
+
+  registerId: ObjectId;
+
+  subPerformerId: ObjectId;
+
+  referralSource: string;
+
+  referralId: ObjectId;
+
+  earningId: ObjectId;
+
+  // video, subscription, stream, tip, ...
+  type: string;
+
+  grossPrice: number;
+
+  subPerformerPrice: number;
+
+  netPrice: number;
+
+  referralCommission: number;
+
+  subPerformerCommission: number;
+
+  isPaid: boolean;
+
+  paidAt: Date;
+
+  createdAt: Date;
+
+  isToken: boolean;
+
+  transactionStatus: string;
+
+  latestPayment: boolean;
+}

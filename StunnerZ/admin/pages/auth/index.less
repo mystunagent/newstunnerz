@@ -1,0 +1,58 @@
+@import '../../style/vars';
+
+.form-body {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  margin: auto;
+  width: 320px;
+  padding: 36px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.08);
+
+  button {
+    width: 100%;
+  }
+
+  p {
+    color: rgb(204, 204, 204);
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 15px;
+
+  img {
+    height: auto;
+    max-width: 80%;
+  }
+
+  span {
+    vertical-align: text-bottom;
+    font-size: 16px;
+    text-transform: uppercase;
+    display: inline-block;
+    font-weight: 700;
+    color: @primary-color;
+    .text-gradient();
+  }
+}
+
+.ant-spin-container,
+.ant-spin-nested-loading {
+  height: 100%;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px;
+}

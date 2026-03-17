@@ -1,0 +1,106 @@
+// @import '../../../style/vars.less';
+
+.custom-events-list {
+	padding-left: 0 !important;
+
+	li {
+		width: 100%;
+    display: flex;
+    align-items: center;
+		font-size: 13px;
+
+		p{
+			margin: 0 0 0 5px;
+			white-space: nowrap;
+		}
+	}
+
+	.bg-red {
+		color: red !important;
+	}
+
+	.bg-gray {
+		color: gray !important;
+		pointer-events: none;
+	}
+
+	.bg-blue {
+		color: blue !important;
+	}
+
+	@media screen and (max-width: 500px) {
+		display: none;
+	}
+}
+
+.custom-events-list-mobile {
+	display: none;
+
+	li {
+		width: 100%;
+    display: flex;
+    align-items: center;
+		font-size: 13px;
+
+		p{
+			margin: 0 0 0 5px;
+			white-space: nowrap;
+		}
+	}
+
+	.bg-red {
+		color: red !important;
+	}
+
+	.bg-gray {
+		color: gray !important;
+		pointer-events: none;
+	}
+
+	.bg-blue {
+		color: blue !important;
+	}
+
+	@media screen and (max-width: @mobile-screen) {
+		display: block;
+		padding-left: 0 !important;
+	}
+}
+
+.main-container {
+	.book-stream-details {
+		text-align: center;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.title-link-booking {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+
+		.title-link-back {
+			.ant-page-header-heading-left {
+				flex-direction: row-reverse;
+			}
+		}
+
+		.title-content {
+			flex-direction: column;
+
+			p {
+				display: flex;
+			}
+		}
+
+    @media screen and (max-width: 500px) {
+			flex-direction: column;
+
+			.title-link-back {
+				padding-bottom: 10px;
+				padding-top: 0;
+			}
+    }
+	}
+}

@@ -1,0 +1,65 @@
+export const SETTING_CHANNEL = 'SETTINGS';
+
+export const SETTING_KEYS = {
+  SITE_NAME: 'siteName',
+  LOGO_URL: 'logoUrl',
+  FAVICON: 'favicon',
+  LOGIN_PLACEHOLDER_IMAGE: 'loginPlaceholderImage',
+  REQUIRE_EMAIL_VERIFICATION: 'requireEmailVerification',
+  ADMIN_EMAIL: 'adminEmail',
+  SENDER_EMAIL: 'senderEmail',
+  META_KEYWORDS: 'metaKeywords',
+  META_DESCRIPTION: 'metaDescription',
+  HEADER_SCRIPT: 'headerScript',
+  AFTER_BODY_SCRIPT: 'afterBodyScript',
+  PERFORMER_COMMISSION: 'performerCommission',
+  SMTP_TRANSPORTER: 'smtpTransporter',
+  GOOGLE_ANALYTICS_CODE: 'gaCode',
+  MAINTENANCE_MODE: 'maintenanceMode',
+  PERFORMER_VERIFY_NUMBER: 'performerVerifyNumber',
+  TWITTER_CLIENT_ID: 'twitterClientId',
+  TWITTER_CLIENT_SECRET: 'twitterClientSecret',
+  GOOGLE_CLIENT_ID: 'googleClientId',
+  GOOGLE_CLIENT_SECRET: 'googleClientSecret',
+  FOOTER_CONTENT: 'footerContent',
+  USER_BENEFIT: 'userBenefit',
+  MODEL_BENEFIT: 'modelBenefit',
+  AWS_S3_REGION_NAME: 's3RegionName',
+  AWS_S3_ACCESS_KEY_ID: 's3AccessKeyId',
+  AWS_S3_SECRET_ACCESS_KEY: 's3SecretAccessKey',
+  AWS_S3_BUCKET_ENDPOINT: 's3BucketEnpoint',
+  AWS_S3_BUCKET_NAME: 's3BucketName',
+  AWS_S3_ENABLE: 's3Enabled',
+  VEROTEL_SHOP_ID: 'verotelShopId',
+  VEROTEL_FLEXPAY_SIGNATURE_KEY: 'verotelFlexpaySignatureKey',
+  VEROTEL_API_VERSION: 'verotelApiVersion',
+  VEROTEL_CURRENCY: 'verotelCurrency',
+  // VEROTEL_ENABLED: 'verotelEnabled',
+  VEROTEL_TEST_MODE: 'verotelTestMode',
+  JUMIO_TOKEN_API: 'jumioTokenApi', // todo - will be removed
+  JUMIO_TOKEN_SECRET: 'jumioTokenSecret', // todo - will be removed
+  TRANSACTION_COST: 'transactionCost',
+  AGORA_APPID: 'agoraAppId',
+  AGORA_CERTIFICATE: 'agoraCertificate',
+  AGORA_ENABLE: 'agoraEnable',
+  PAYMENT_GATEWAY: 'paymentGateway',
+  ONDATO_MODE: 'ondatoMode', // sandbox or live
+  ONDATO_VERSION: 'ondatoVersion',
+  ONDATO_SETUP_ID: 'ondatoSetupId',
+  ONDATO_CLIENT_ID: 'ondatoClientId',
+  ONDATO_CLIENT_SECRET: 'ondatoClientSecret',
+  PERFORMER_TO_PERFORMER_REFERRAL_COMMISSION: 'p2pReferralCommission',
+  PERFORMER_TO_USER_REFERRAL_COMMISSION: 'p2uReferralCommission',
+  USER_TO_PERFORMER_REFERRAL_COMMISSION: 'u2pReferralCommission',
+  USER_TO_USER_REFERRAL_COMMISSION: 'u2uReferralCommission',
+  SPEED_BANNER: 'speedBanner',
+  ACCOUNT_MANAGER_COMMISSION: 'accountManagerCommission',
+  EVENT_COMMISSION: 'eventCommission',
+  PRIVATE_STREAM_COMMISSION: 'privateStreamCommission'
+};
+
+export const MENU_SECTION = {
+  MAIN: 'main',
+  HEADER: 'header',
+  FOOTER: 'footer'
+};

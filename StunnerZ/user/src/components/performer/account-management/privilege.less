@@ -1,0 +1,60 @@
+.main-container {
+  .setup-choose-commission-privilege {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 0;
+    text-align: center;
+
+    span {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 500px) {
+      
+      .ant-radio-wrapper:last-child {
+        margin-left: 33px;
+      }
+    }
+  }
+  .setup-commission-privilege {
+    text-align: center;
+
+    h3 {
+      margin-left: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .setup-commission-privilege-details {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .ant-input-number {
+        width: 150px;
+        height: 40px;
+      }
+
+      button {
+        margin: 0 10px;
+      }
+
+      @media screen and (max-width: 500px) {
+        flex-direction: column;
+
+        .ant-input-number {
+          width: 200px;
+          margin: 10px 0 20px 0;
+        }
+
+        button {
+          width: 150px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

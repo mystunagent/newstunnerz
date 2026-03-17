@@ -1,0 +1,65 @@
+@import '../../../style/vars.less';
+
+.main-posts-filter {
+	position: sticky;
+	top: 80px;
+	height: fit-content;
+	overflow-y: scroll;
+	padding-right: 1rem;
+	z-index: 8;
+	height: calc(100vh - 90px);
+	.custom {
+		margin: 20px 0;
+
+		input {
+			padding: 10px;
+		}
+	}
+
+	.btn-clear-filter {
+		width: 100%;
+
+		button {
+			width: 100%;
+			margin-top: 10px;
+		}
+	}
+
+	@media screen and (max-width: @mobile-screen) {
+		height: auto !important;
+	}
+
+}
+
+.filter-post-option {
+
+	.ant-menu {
+		background-color: #fff;
+		color: #000;
+
+		li {
+			border: none;
+		}
+	}
+}
+
+.home-footer {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  .main-footer {
+    ul li {
+      font-size: 11px;
+    }
+    .footer-content {
+      font-size: 11px;
+    }
+  }
+
+  &.active {
+    opacity: 1;
+  }
+
+  @media screen and (max-width: @mobile-screen) {
+    display: none;
+  }
+}

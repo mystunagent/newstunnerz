@@ -1,0 +1,52 @@
+@import "../../../../style/vars.less";
+
+.menu-option-filter-model-on-mobile {
+  height: 100%;
+  .advance-filter-live {
+    display: none;
+
+    @media screen and (max-width: 500px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+
+      button {
+        border: 3px solid #000;
+        border-radius: 5px;
+        height: 44px;
+        margin-bottom: 1px;
+      }
+    }
+  }
+  .advance-modal-option {
+    .menu-options-items {
+      background: #fff;
+      color: #000;
+      border: none;
+      li {
+        border: 1px solid #ccc;
+      }
+      .ant-menu-sub.ant-menu-inline {
+        color: #000;
+      }
+      button {
+        margin: 0;
+      }
+    }
+
+    .btn-options {
+      text-transform: uppercase;
+      width: 100%;
+      border: 40px;
+      height: 40px;
+      text-align: center;
+      border: 2px solid #000;
+    }
+
+    .btn-options-primary {
+      background: @secondary-color;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import '../../style/vars.less';
+
+.ant-back-top.backTop {
+  bottom: 75px;
+  right: 30px;
+}
+
+.ant-back-top-content {
+  background: @primary-color;
+  opacity: 0.3;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px 1px rgba(69, 65, 78, 0.1);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@media (max-width: @mobile-screen) {
+  .backTop {
+    right: 20px;
+    bottom: 20px;
+  }
+}

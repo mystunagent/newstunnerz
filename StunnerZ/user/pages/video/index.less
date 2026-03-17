@@ -1,0 +1,183 @@
+@import '../../style/default.less';
+
+.vid-title {
+  margin: 15px 0 10px;
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: @primary-font-bold;
+  word-break: break-all;
+}
+
+.vid-duration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    font-size: 12px;
+    color: @dark-grey;
+  }
+}
+
+.vid-player {
+  padding: 15px 0;
+
+  .vid-group {
+    position: relative;
+
+    .video-thumbs {
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        max-height: 60vh;
+        object-fit: cover;
+        overflow: hidden;
+        filter: blur(25px)
+      }
+    }
+
+    .vid-processing {
+      background-color: @black;
+      color: @white;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .vid-exl-group {
+      z-index: 1;
+      width: 100%;
+      padding: 20px 10px;
+      background: rgba(0, 0, 0, .5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      top: 30%;
+      min-height: 250px;
+      left: 0;
+      text-align: center;
+      bottom: 50%;
+
+      h4 {
+        color: @secondary-color;
+        font-size: 18px;
+        padding: 0 15px;
+      }
+
+      h3 {
+        font-size: 25px;
+        color: @white;
+      }
+
+
+      @media screen and (max-width: @mobile-screen) {
+        top: 40%;
+        min-height: 175px;
+
+        h3 {
+          font-size: 16px;
+        }
+        .subscription-btn-grp {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .videojs-player {
+    .video-js {
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .vjs-poster {
+      border-radius: 3px;
+      border: none
+    }
+  }
+}
+
+.discount-price {
+  -webkit-text-decoration-line: line-through;
+  text-decoration-line: line-through;
+}
+
+.vid-tags {
+  margin: 15px 0;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  text-transform: lowercase;
+}
+
+.participant-card {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 10px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid @primary-color
+  }
+
+  .participant-info {
+    padding: 10px;
+    width: calc(100% - 100px);
+
+    h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0;
+      color: @primary-color;
+      text-transform: capitalize;
+    }
+
+    h5 {
+      font-size: 13px;
+      color: @primary-color;
+    }
+
+    .p-bio {
+      color: @dark-grey;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
+
+.coupon-form {
+  margin: 20px 0;
+
+  .ant-input {
+    height: 40px;
+  }
+
+  .ant-btn.primary {
+    height: 40px;
+    background-image: linear-gradient(0deg, @primary-color, @theme-color);
+    color: @white;
+    font-weight: 600;
+  }
+
+  .ant-btn.normal {
+    height: 40px;
+    background-color: @secondary-color;
+    color: @black;
+    font-weight: 600;
+  }
+}

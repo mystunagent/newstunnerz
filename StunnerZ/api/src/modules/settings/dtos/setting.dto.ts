@@ -1,0 +1,48 @@
+import { ObjectId } from 'mongodb';
+import { pick } from 'lodash';
+
+export class SettingDto {
+  _id: ObjectId;
+
+  key: string;
+
+  value: any;
+
+  oldValue?: any; // to compare
+
+  name: string;
+
+  description: string;
+
+  group = 'system';
+
+  public = false;
+
+  type = 'text';
+
+  visible = true;
+
+  meta: any;
+
+  createdAt: Date;
+
+  updatedAt: Date;
+
+  extra: string;
+
+  options: any;
+
+  constructor(data?: Partial<SettingDto>) {
+    data && Object.assign(this, pick(data, [
+      '_id', 'key', 'value', 'oldValue', 'name', 'description', 'type', 'visible', 'public', 'meta', 'createdAt', 'updatedAt', 'extra', 'options'
+    ]));
+  }
+
+  public getValue() {
+    if (this.type === 'text' && !this.value) {
+      return '';
+    }
+
+    return this.value;
+  }
+}

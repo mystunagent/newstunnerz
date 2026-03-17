@@ -1,0 +1,61 @@
+@import '../../../style/vars.less';
+
+.paid-content-form {
+  padding: 10px 0px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  &.submit {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .ant-form-item {
+    margin-bottom: 5px;
+
+    .ant-select-selection-item {
+      line-height: 1;
+      height: auto;
+    }
+
+  }
+
+  .upload-paid-content {
+    .ant-upload {
+      display: none;
+    }
+
+    .ant-tooltip {
+      display: none;
+    }
+
+    .ant-upload-list-picture-card-container {
+      width: 300px;
+      height: 300px;
+    }
+
+    .ant-upload-select.ant-upload-select-picture-card {
+      border: unset;
+      border-radius: unset;
+      background-image: unset;
+      background-repeat: unset;
+      background-size: unset;
+      background-position: unset;
+      position: unset;
+    }
+
+    .ant-upload.ant-upload-select-picture-card {
+      width: unset;
+      height: unset;
+      margin-right: unset;
+      margin-bottom: unset;
+      text-align: unset;
+      vertical-align: unset;
+      background-color: unset;
+      border: unset;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+  }
+}

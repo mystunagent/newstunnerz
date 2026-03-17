@@ -1,0 +1,31 @@
+.private-live-streaming {
+  position: relative;
+
+  .publisher {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 200px;
+    height: 100px;
+    z-index: 10;
+  }
+  @media screen and (max-width: 550px) {
+      .publisher {
+        left: 3%;
+        top: 8%;
+        height: 135px !important;
+        overflow: hidden;
+        width: 100px;
+        * {
+          height: 135px !important;
+        }
+      }
+      // .subscriber {
+      //   height: 100vh;
+      //   * {
+      //     height: 100vh;
+      //   }
+      // }
+    }
+
+}

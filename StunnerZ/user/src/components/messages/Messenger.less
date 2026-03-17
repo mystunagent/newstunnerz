@@ -1,0 +1,56 @@
+@import '../../../style/vars.less';
+.messenger {
+  display: flex;
+  width: 100%;
+  height: 85vh;
+  position: relative;
+  margin: 20px 0;
+}
+
+.scrollable {
+  position: relative;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sidebar {
+  width: 30%;
+  border: 1px solid @light-card;
+}
+
+.chat-content {
+  width: 70%;
+  border: 1px solid @light-card;
+  border-left: none;
+}
+
+
+.footer {
+  background: @white;
+}
+
+.message-stream {
+  height: 428px;
+}
+
+@media all and (max-width: @mobile-screen) {
+  .sidebar {
+    width: 100%;
+  }
+  .sidebar.active {
+    display: none;
+  }
+  .chat-content {
+    display: none;
+  }
+  .chat-content.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: @white;
+  }
+}
