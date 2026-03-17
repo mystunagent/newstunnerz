@@ -1,0 +1,38 @@
+name: Build (Stunnerz)
+
+on:
+  pull_request:
+
+jobs:
+  build-api:
+    runs-on: ubuntu-latest
+    container: node:16-bullseye
+    defaults:
+      run:
+        working-directory: api
+    steps:
+      - uses: actions/checkout@v4
+      - run: yarn
+      - run: yarn build
+
+  build-user:
+    runs-on: ubuntu-latest
+    container: node:16-bullseye
+    defaults:
+      run:
+        working-directory: user
+    steps:
+      - uses: actions/checkout@v4
+      - run: yarn
+      - run: yarn build
+
+  build-admin:
+    runs-on: ubuntu-latest
+    container: node:16-bullseye
+    defaults:
+      run:
+        working-directory: admin
+    steps:
+      - uses: actions/checkout@v4
+      - run: yarn
+      - run: yarn build
