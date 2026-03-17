@@ -1,0 +1,127 @@
+
+name: Build apps and upload artifacts (Stunnerz - production)
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: eu-north-1
+  ARTIFACT_BUCKET: stunnerz-artifacts-github
+  AWS_ROLE_TO_ASSUME: arn:aws:iam::123456789012:role/github-interaction-stunnerz
+  SHA: ${{ github.sha }}
+
+jobs:
+  build-api:
+    runs-on: ubuntu-latest
+    container: node:16-bullseye
+    defaults:
+      run:
+        working-directory: api
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install AWS CLI in container
+        run: |
+          apt-get update -y
+          apt-get install -y awscli
+      - name: Configure AWS creds
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+      - run: yarn
+      - run: yarn build
+      - name: Pack and upload
+        run: |
+          tar -czf "/tmp/${SHA}.tar.gz" .
+          aws s3 cp "/tmp/${SHA}.tar.gz" "s3://${ARTIFACT_BUCKET}/api/${SHA}.tar.gz" --sse AES256
+          aws s3 cp "/tmp/${SHA}.tar.gz" "s3://${ARTIFACT_BUCKET}/api/production.tar.gz" --sse AES256
+
+  build-user:
+    runs-on: ubuntu-latest
+    container: node:16-bullseye
+    defaults:
+      run:
+        working-directory: user
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install AWS CLI in container
+        run: |
+          apt-get update -y
+          apt-get install -y awscli
+      - name: Configure AWS creds
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+      - run: yarn
+      - run: yarn build
+      - name: Pack and upload
+        run: |
+          tar -czf "/tmp/${SHA}.tar.gz" .
+          aws s3 cp "/tmp/${SHA}.tar.gz" "s3://${ARTIFACT_BUCKET}/user/${SHA}.tar.gz" --sse AES256
+          aws s3 cp "/tmp/${SHA}.tar.gz" "s3://${ARTIFACT_BUCKET}/user/production.tar.gz" --sse AES256
+
+  build-admin:
+    runs-on: ubuntu-latest
+    container: node:16-bullseye
+    defaults:
+      run:
+        working-directory: admin
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install AWS CLI in container
+        run: |
+          apt-get update -y
+          apt-get_install -y awscli
+      - name: Configure AWS creds
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+      - run: yarn
+      - run: yarn build
+      - name: Pack and upload
+        run: |
+          tar -czf "/tmp/${SHA}.tar.gz" .
+          aws s3 cp "/tmp/${SHA}.tar.gz" "s3://${ARTIFACT_BUCKET}/admin/${SHA}.tar.gz" --sse AES256
+          aws s3 cp "/tmp/${SHA}.tar.gz" "s3://${ARTIFACT_BUCKET}/admin/production.tar.gz" --sse AES256
+
+  deploy-ssm:
+    runs-on: ubuntu-latest
+    needs: [build-api, build-user, build-admin]
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      SHA: ${{ github.sha }}
+    steps:
+      - name: Configure AWS creds (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Trigger SSM deploy and wait
+        run: |
+          set -euo pipefail
+          CMD_ID=$(aws ssm send-command             --document-name "AWS-RunShellScript"             --targets "Key=tag:Name,Values=stunnerz-production"             --comment "Deploy $SHA"             --parameters '{"commands":["bash /home/ubuntu/deploy.sh '"$SHA"'"]}'             --max-errors "0"             --query "Command.CommandId"             --output text)
+
+          echo "CommandId: $CMD_ID"
+
+          while true; do
+            STATUS=$(aws ssm list-command-invocations               --command-id "$CMD_ID"               --details               --query "CommandInvocations[0].Status"               --output text || echo "Pending")
+
+            echo "Status: $STATUS"
+
+            case "$STATUS" in
+              Success) break ;;
+              Failed|Cancelled|TimedOut) exit 1 ;;
+              *) sleep 5 ;;
+            esac
+          done
